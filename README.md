@@ -181,134 +181,11 @@ fact they have never been easier to manage. Let's take a look at one together.
      `git rebase --continue | --skip | --abort | --quit | --edit-todo`
      (view more info on these using `git rebase --help`)
 
-
-## Project Workflow
-
-1. Create a GitHub Organization for your repos, and add collaborators as members
-   of the organization. Their role must be set to **Owner**. To confirm that
-   they have joined as owners, go to the "People" tab on your organization. If
-   you need to change someone's role, you can do so by clicking the gear icon.
-   Any repos that you create as part of the project will go inside this
-   organization. Make sure you create the organization on GitHub and not GitHub
-   Enterprise.
-
-1. Create an empty starting repo within the new GitHub organization. (If you were
-   working on an existing repo such as for homework, you'd fork it).
-
-1. Using `git remote add origin <your-ssh-git-url>` attach your two GitHub
-   repos to the corresponding ones on your local computer (one for React containing your
-   front end app and another for Express containing your API server).
-
-1. Create a `development` branch in each repo and push them up to the remotes
-   on GitHub.
-
-1. Have each member of the team clone, **NOT FORK**, both repos, so that they
-   have their own copies of each.
-
-#### Regular Workflow
-
-On a day-to-day basis, your team will follow a feature branching workflow. Each
-time you want to create a new feature for your app, you'll go through the
-following stages.
-
-##### Creating a New Feature Branch
-
-1. Check out your `development` branch (`git checkout development`)
-
-1. Ensure that `development` is up to date with the `development` branch on
-   GitHub by running `git pull origin development`.
-
-1. Create and check out a new feature branch using `git checkout -b my-feature-branch`
-
-##### Integrating a Feature
-
-1. After you're done working on the branch, check in with your team and let them
-   know that you're ready to integrate your feature.
-
-1. Because `development` may have been updated in the time since the feature
-   branch was created, it's important to make sure that the new feature doesn't
-   conflict with anything. Run `git checkout development` and `git pull origin development` to make sure that your `development` branch incorporates any
-   updates that were made on the repo on GitHub. Then, run `git checkout my-feature-branch` and `git rebase development` to rebase your new feature on
-   top of the (updated) `development` branch.
-
-1. If any conflicts were introduced in the previous step,
-   work through the code **with your team** and resolve each one;
-   when you finish, make a commit.
-
-1. Now that your branch has been rebased, and you're ready to integrate it,
-   push your branch up to GitHub with `git push origin my-feature-branch`
-   and then create a pull request (within your GitHub repo)
-   from your feature branch to the `development` branch.
-
-1. As a team, review the pull request, confirm whether or not
-   it can be merged in automatically, and decide whether or not
-   to approve the pull request.
-
-   If there are merge conflicts preventing an automatic merge,
-   a member of your team will need to resolve those conflicts manually
-   on their machine, and then push the newly updated `development` branch
-   back up to GitHub.
-
-Once `development` has been updated, other members of the team
-will need to rebase their own feature branches on it (as described in Step 2)
-before they push up those feature branches up to GitHub.
-
-What if you want to know about remote branches, such as a feature branch that
-someone else is working on? You might want to pull down a feature branch to
-test it locally, for example.
-
-Each team member can learn about what exists on the remote. This can be done
-with `git fetch origin`. Then, your local git knows about remote branches that
-may not have existed when you first cloned the repo.
-`git checkout <some-new-branch>` will now be set up as a new branch that tracks
-the remote feature branch. Without the fetch, the local git will not know
-anything about origin's branches.
-
-##### Deploying a Working App
-
-Work through the following steps as a team.
-
-1. Have one member of the team check out `development`
-   and pull down the latest version from GitHub.
-
-1. For this version, check and make sure that the application is working.
-   If you have tests, run them.
-
-1. When you're satisfied that the app is ready to deploy,
-   check out the `master` branch and run `git merge development`.
-
-1. Push the finished version of your code up to GitHub
-   (`git push origin master`).
-
-1. Deploy!
-
-### Project Workflow Visual Recap
-
-These images may help you understand and remember the procedure described above:
-
-#### Pull Development Branch
-
-![Git workflow diagram 1 showing two team members pulling the dev branch](https://media.git.generalassemb.ly/user/17300/files/827c1d00-27e8-11eb-9af4-f291ab1f4502)
-
-#### Create a Feature Branch
-
-![Git workflow diagram 2 showing two team members each creating a feature branch](https://media.git.generalassemb.ly/user/17300/files/ca9b3f80-27e8-11eb-8265-88930237f3af)
-
-#### Complete a Feature
-
-![Git workflow diagram 3 showing one team member opening a PR for a feature branch and the team merging the PR into the dev branch](https://media.git.generalassemb.ly/user/17300/files/9cb6fa80-27ea-11eb-9754-9bb899bb5aec)
-
-#### Update Development
-
-![Git workflow diagram 4 showing all team members updating their local development branch](https://media.git.generalassemb.ly/user/17300/files/8f4d4080-27e9-11eb-8c60-471456739004)
-
-#### Rebase Active Feature Branch
-
-![Git workflow diagram 5 showing team member with a feature branch in development rebasing the feature branch against the dev branch](https://media.git.generalassemb.ly/user/17300/files/ce7b9180-27e9-11eb-9079-a6b13814dffe)
-
 ## Git Workflows
 
-The process described above is a simplified version of one that is very commonly used in the industry.  It is often described as a **Feature Branch Workflow**.  There are other workflows as well such as:
+The process described above is a simplified version of a **Feature Branch Workflow** that is commonly used in the industry. This workflow process will form the basis of the **Project Workflow** we'll use for project 3. 
+
+Some workflows you should know are:
 
 ### Centralized Workflow
 
@@ -399,6 +276,111 @@ as an outside contractor or freelancer._
 > From
 > [Atlassian - Forking Workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/forking-workflow)
 
+
+## Project Workflow
+
+For project 3 the process we'll be following is a version of the feature branch workflow.
+
+### Initial Set Up
+
+1. Create a GitHub Organization for your repos, and add collaborators as members
+   of the organization. Their role must be set to **Owner**. To confirm that
+   they have joined as owners, go to the "People" tab on your organization. If
+   you need to change someone's role, you can do so by clicking the gear icon.
+   Any repos that you create as part of the project will go inside this
+   organization. Make sure you create the organization on GitHub and not GitHub
+   Enterprise.
+
+1. Create an empty starting repo within the new GitHub organization. (If you were
+   working on an existing repo such as for homework, you'd fork it).
+
+1. Using `git remote add origin <your-ssh-git-url>` attach your two GitHub
+   repos to the corresponding ones on your local computer (one for React containing your
+   front end app and another for Express containing your API server).
+
+1. Create a `dev` branch in each repo and push them up to the remotes
+   on GitHub.
+
+1. Have each member of the team clone, **NOT FORK**, both repos, so that they
+   have their own copies of each.
+
+### Regular Workflow
+
+On a day-to-day basis, your team will follow a feature branching workflow. Each
+time you want to create a new feature for your app, you'll go through the
+following stages.
+
+#### Creating a New Feature Branch
+
+1. Check out your `dev` branch (`git checkout dev`)
+
+1. Ensure that `dev` is up to date with the `dev` branch on
+   GitHub by running `git pull origin dev`.
+
+1. Create and check out a new feature branch using `git checkout -b my-feature-branch`
+
+#### Integrating a Feature
+
+1. After you're done working on the branch, check in with your team and let them
+   know that you're ready to integrate your feature.
+
+1. Because `dev` may have been updated in the time since the feature
+   branch was created, it's important to make sure that the new feature doesn't
+   conflict with anything. Run `git checkout dev` and `git pull origin dev` to make sure that your `dev` branch incorporates any
+   updates that were made on the repo on GitHub. Then, run `git checkout my-feature-branch` and `git rebase dev` to rebase your new feature on
+   top of the (updated) `dev` branch.
+
+1. If any conflicts were introduced in the previous step,
+   work through the code **with your team** and resolve each one;
+   when you finish, make a commit.
+
+1. Now that your branch has been rebased, and you're ready to integrate it,
+   push your branch up to GitHub with `git push origin my-feature-branch`
+   and then create a pull request (within your GitHub repo)
+   from your feature branch to the `dev` branch.
+
+1. As a team, review the pull request, confirm whether or not
+   it can be merged in automatically, and decide whether or not
+   to approve the pull request.
+
+   If there are merge conflicts preventing an automatic merge,
+   a member of your team will need to resolve those conflicts manually
+   on their machine, and then push the newly updated `dev` branch
+   back up to GitHub.
+
+Once `dev` has been updated, other members of the team
+will need to rebase their own feature branches on it (as described in Step 2)
+before they push up those feature branches up to GitHub.
+
+What if you want to know about remote branches, such as a feature branch that
+someone else is working on? You might want to pull down a feature branch to
+test it locally, for example.
+
+Each team member can learn about what exists on the remote. This can be done
+with `git fetch origin`. Then, your local git knows about remote branches that
+may not have existed when you first cloned the repo.
+`git checkout <some-new-branch>` will now be set up as a new branch that tracks
+the remote feature branch. Without the fetch, the local git will not know
+anything about origin's branches.
+
+#### Deploying a Working App
+
+Work through the following steps as a team.
+
+1. Have one member of the team check out `dev`
+   and pull down the latest version from GitHub.
+
+1. For this version, check and make sure that the application is working.
+   If you have tests, run them.
+
+1. When you're satisfied that the app is ready to deploy,
+   check out the `master` branch and run `git merge dev`.
+
+1. Push the finished version of your code up to GitHub
+   (`git push origin master`).
+
+1. Deploy!
+
 ## Resources
 
 ### Cheat Sheets
@@ -421,7 +403,7 @@ as an outside contractor or freelancer._
 
 ## Bonus
 
-<details><summary><strong>Want to learn more advanced things about Git?</strong></summary><p>
+<details><summary><strong>Advance Git Tips & Tricks</strong></summary><p>
    
    ## Tips & Tricks
 
@@ -476,73 +458,6 @@ To use git blame on GitHub:
 - Navigate to a repository, and click on a file that you're interested in.
 - Click on the Blame button in the upper-right tab list.
 - Browse the list of changes in a file.
-
-### Git Aliases
-
-Aliases allow us to configure shortcuts and can help speed up our workflow!
-
-We can configure them in our `.gitconfig` or `.bash_profile`
-
-Example Aliases...
-
-```sh
-[alias]
-  g = git
-  current = rev-parse --abbrev-ref HEAD
-  gl = git log --all --oneline --graph --decorate
-```
-
-If you are adding an Alias to your bash profile you might have to reload to see
-your updates by running `$ source ~/.bash_profile`
-
-## Rebasing
-
-Rebasing allows us to rearrange and effectively rewrite our commit history.
-Rather than combining the most recent commits from two different branches via a
-single commit, it combines the two branches themselves, rearranging their
-commits while **_re-writing_** the repo's commit history. For that reason, it
-can be dangerous.
-
-### Git Merge
-
-![Git
-Pull/Merge](https://git.generalassemb.ly/storage/user/6376/files/aee6a68e-81b6-11e7-9fb7-31c12053681f)
-
-### Git Rebase
-
-![Git
-Rebase](https://git.generalassemb.ly/storage/user/6376/files/c6f3d54e-81b6-11e7-9f1b-c5a81d1e0207)
-
-[Document Dive](https://www.atlassian.com/git/tutorials/merging-vs-rebasing/)
-
-### Rebase vs Merge
-
-![Rebase vs
-Merge](https://raw.githubusercontent.com/gitforteams/diagrams/master/flowcharts/rebase-or-merge.png)
-
-<details>
-
-<summary>Example Scenario</summary>
-
-Here's what a rebase looks like. Suppose we have two branches, a master and a
-feature branch.
-
-One day, someone makes a commit onto the master branch. We want to include those
-changes into our feature branch, so that our code doesn't conflict with theirs.
-From our feature branch, if we run the command
-`git pull --rebase <remote> <branch>`, we can tell git to rewrite the history of
-our feature branch as if the new commit on master had always been there.
-
-Rebase is extremely useful for cleaning up your commit history, but it also
-carries risk; when you rebase, you are in fact discarding your old commits and
-replacing them with new (though admittedly, similar) commits, and this can
-seriously screw up a collaborator if you're working in a shared repo. **The
-golden rule for git rebase is "Only rebase before sharing your code, never
-after."**
-
-Like git merge, git rebase also sometimes runs into merge conflicts that need to
-be resolved. The procedure for doing this is almost the same; once you fix the
-conflicts, run `git rebase --continue` to complete the rebase.
 
 </details>
 
