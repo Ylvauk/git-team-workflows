@@ -45,7 +45,7 @@ Branches offer the following benefits:
    another branch of our choice. If it succeeds, we can merge those changes
    into our working code.
 
-2. **Isoloate Specific Features**. We can have one branch for the production
+2. **Isolate Specific Features**. We can have one branch for the production
    version of the app and another branch for the version currently under
    development. If a customer files a bug report, we can make a branch from the
    production version of the app to fix the bug without affecting the features
