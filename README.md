@@ -26,7 +26,7 @@ a solid foundation of Git basics.
 1. Fork this repository to your own account and clone the forked repo to your machine.
 1. Change directory into your cloned repo. 
 1. Run `git checkout solution` to check out the _existing_ solution branch locally.
-1. Run `git checkout master` to go back to the `master` branch.
+1. Run `git checkout main` to go back to the `main` branch.
 
 ## Review Git: Branching & Merging
 
