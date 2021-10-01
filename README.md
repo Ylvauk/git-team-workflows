@@ -21,6 +21,13 @@ practices, combined with good communication make collaboration easier and more
 efficient. In order to build up to that, we need to make sure we're building on
 a solid foundation of Git basics.
 
+## Set Up
+
+1. Fork this repository to your own account and clone the forked repo to your machine.
+1. Change directory into your cloned repo. 
+1. Run `git checkout solution` to check out the _existing_ solution branch locally.
+1. Run `git checkout master` to go back to the `master` branch.
+
 ## Review Git: Branching & Merging
 
 ### Why Git?
