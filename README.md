@@ -21,6 +21,13 @@ practices, combined with good communication make collaboration easier and more
 efficient. In order to build up to that, we need to make sure we're building on
 a solid foundation of Git basics.
 
+## Set Up
+
+1. Fork this repository to your own account and clone the forked repo to your machine.
+1. Change directory into your cloned repo. 
+1. Run `git checkout solution` to check out the _existing_ solution branch locally.
+1. Run `git checkout main` to go back to the `main` branch.
+
 ## Review Git: Branching & Merging
 
 ### Why Git?
@@ -45,7 +52,7 @@ Branches offer the following benefits:
    another branch of our choice. If it succeeds, we can merge those changes
    into our working code.
 
-2. **Isoloate Specific Features**. We can have one branch for the production
+2. **Isolate Specific Features**. We can have one branch for the production
    version of the app and another branch for the version currently under
    development. If a customer files a bug report, we can make a branch from the
    production version of the app to fix the bug without affecting the features
